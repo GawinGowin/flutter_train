@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train/first_page.dart';
 
 class SecondPage extends StatelessWidget {
+  
+  SecondPage(this.name);
+  final String name;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,13 +13,19 @@ class SecondPage extends StatelessWidget {
       ),
       
       body: Center(
-        child: Container(
-            child: ElevatedButton(
-            onPressed: (){
-              Navigator.pop(context);
-            },
-            child: Text("前の画面に変遷"),),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("$name !!!!", style: TextStyle(fontSize: 50),),
+            Container(
+                child: ElevatedButton(
+                onPressed: (){
+                  Navigator.pop(context);
+                },
+                child: Text("前の画面"),),
       
+            ),
+          ],
         ),
       )
 
