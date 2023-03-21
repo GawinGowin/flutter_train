@@ -63,25 +63,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         title: Text("testtest"),
       ),
       body: Container(
-        color: Colors.grey,
-        width: double.infinity,
-        height: double.infinity,
-        child: Row(
-          children: [
-            Text("data"), Text("2"), Container(color: Colors.red, child:Text("scafford"))
-          ],
-        ),
+        child: TextButton(
+          onPressed: (){
+            
+          },
+          child: Text("button"),),
+
       )
 
     );
