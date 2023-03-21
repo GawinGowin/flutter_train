@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train/third_page.dart';
 
 class SecondPage extends StatelessWidget {
   
@@ -20,10 +21,11 @@ class SecondPage extends StatelessWidget {
             Container(
                 child: ElevatedButton(
                 onPressed: (){
-                  Navigator.pop(context);
+                    Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => ThirdPage()),
+                     );
                 },
-                child: Text("前の画面"),),
-      
+                child: Text("次の画面"),),
             ),
           ],
         ),
