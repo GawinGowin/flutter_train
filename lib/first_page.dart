@@ -30,7 +30,6 @@ class FirstPage extends StatelessWidget {
                     print(text);
                   },
 
-
                 ),
           
                 ElevatedButton(
