@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-
+import 'package:flutter_train/fourth_page.dart';
 
 class ThirdPage extends StatelessWidget {
   List<int> entries = <int>[for (var i = 0; i < 100; i++) i];
@@ -31,6 +29,14 @@ class ThirdPage extends StatelessWidget {
                 }
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+              Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => FourthPage()),
+                     );
+              },
+            child: Text("次の画面"),),
+
             ElevatedButton(
               onPressed: (){
                   Navigator.pop(context);
