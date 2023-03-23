@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_train/second_page.dart';
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
+  @override
+  State<FirstPage> createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
   String nameText = "";
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +33,16 @@ class FirstPage extends StatelessWidget {
                   ),
                   onChanged: (text){
                     nameText = text;
-                    print(text);
                   },
-
                 ),
-          
                 ElevatedButton(
                   onPressed: (){
-                    Navigator.push(context,
-                     MaterialPageRoute(builder: (context) => SecondPage(nameText)),
-                     );
+                    setState(() {});
                   },
                   child: Text("今入力したPWは...."),),
+
+                Text("$nameText",style: TextStyle(fontSize: 30),),
+                
               ],
             ),
           ),
