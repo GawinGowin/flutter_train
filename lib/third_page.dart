@@ -15,7 +15,6 @@ class ThirdPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
-
           children: <Widget>[
             Flexible(
               child: ListView.builder(
@@ -29,20 +28,6 @@ class ThirdPage extends StatelessWidget {
                 }
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-              Navigator.push(context,
-                     MaterialPageRoute(builder: (context) => FourthPage()),
-                     );
-              },
-            child: Text("次の画面"),),
-
-            ElevatedButton(
-              onPressed: (){
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-              },
-            child: Text("戻る"),),
           ]
         ),
     );

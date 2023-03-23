@@ -52,7 +52,7 @@ class _FourthPageState extends State<FourthPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
       
           children: <Widget>[
-            Text("myChoice   cpuChoice",
+            Text("myChoice   randomInt",
             style: TextStyle(fontSize: 32,)            
             ),
 
@@ -89,14 +89,7 @@ class _FourthPageState extends State<FourthPage> {
               ],
 
             ),   
-      
-            ElevatedButton(
-                onPressed: (){
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                },
-              child: Text("戻る"),)
+
           ]
         ),
       )

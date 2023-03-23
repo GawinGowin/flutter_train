@@ -7,7 +7,6 @@ import 'package:flutter_train/second_page.dart';
 import 'package:flutter_train/third_page.dart';
 import 'package:flutter_train/fourth_page.dart';
 
-
 void main() {
   const app = MaterialApp(home: Rooter());
   const scope = ProviderScope(child: app);
@@ -39,7 +38,7 @@ class Rooter extends ConsumerWidget {
         ),
       BottomNavigationBarItem(
         icon: Icon(Icons.settings_outlined),
-        label:"s"
+        label:"settings"
         ),
     ];
     final bar = BottomNavigationBar(
@@ -55,7 +54,7 @@ class Rooter extends ConsumerWidget {
 
     final pages = [
       FirstPage(),
-      SecondPage("temp"),
+      SecondPage(),
       ThirdPage(),
       FourthPage()
     ];
