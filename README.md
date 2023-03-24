@@ -1,6 +1,6 @@
 # flutter_train
 
-A new Flutter project.
+個人的サンドボックス
 
 ## Getting Started
 
