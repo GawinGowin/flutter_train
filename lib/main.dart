@@ -8,8 +8,12 @@ import 'package:flutter_train/pages/list_view.dart';
 import 'package:flutter_train/pages/math_rand.dart';
 
 import 'package:flutter_train/providers.dart';
+import 'package:flutter_train/database/database.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await DbHelper.instance.initialize();
+
   const app = MaterialApp(home: Rooter());
   const scope = ProviderScope(child: app);
   runApp(scope);
