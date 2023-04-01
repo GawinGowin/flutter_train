@@ -37,3 +37,7 @@ class ToDo with _$ToDo {
 
   factory ToDo.fromJson(Map<String, dynamic> json) => _$ToDoFromJson(json);
 }
+/**
+ * ToDoRecord = {key:value}
+ * value = {"title": title, "archived": true/false}
+ *///
