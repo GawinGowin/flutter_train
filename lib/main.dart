@@ -7,6 +7,9 @@ import 'package:flutter_train/pages/color_pref.dart';
 import 'package:flutter_train/pages/list_view.dart';
 import 'package:flutter_train/pages/math_rand.dart';
 
+import 'package:flutter_train/pages/test_todo.dart';
+
+
 import 'package:flutter_train/providers.dart';
 import 'package:flutter_train/database/database.dart';
 
@@ -46,13 +49,18 @@ class Rooter extends ConsumerWidget {
         icon: Icon(Icons.calculate),
         label:"calculate"
         ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.dataset),
+        label:"database"
+        ),        
     ];
 
     final pages = [
       PwFormPage(),
       ColorPrefPage(),
       ListViewPage(),
-      MathRandPage()
+      MathRandPage(),
+      TodoScreen()
     ];
 
     final bar = BottomNavigationBar(
