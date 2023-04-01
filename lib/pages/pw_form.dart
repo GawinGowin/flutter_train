@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class pwFormPage extends StatefulWidget {
+import 'package:flutter_train/providers.dart';
+
+class PwFormPage extends ConsumerStatefulWidget {
+  const PwFormPage({Key? key}) : super(key: key);
   @override
-  State<pwFormPage> createState() => _pwFormPageState();
+  PwFormPageState createState() => PwFormPageState();
 }
 
-class _pwFormPageState extends State<pwFormPage> {
+class PwFormPageState extends ConsumerState<PwFormPage> {
   String nameText = "";
-
 
   @override
   Widget build(BuildContext context) {
+    final counter = ref.watch(indexProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text("first"),
+        leading: const Icon(Icons.password),
+        title: const Text('PasswordForm'),
+        centerTitle: true,
+        elevation: 10,
+        actions: [Text('index:$counter'),],
       ),
-      
+
       body: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -25,7 +33,7 @@ class _pwFormPageState extends State<pwFormPage> {
                 TextField(
                   enabled: true,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Password"
                   ),
@@ -37,15 +45,13 @@ class _pwFormPageState extends State<pwFormPage> {
                   onPressed: (){
                     setState(() {});
                   },
-                  child: Text("今入力したPWは...."),),
+                  child: const Text("今入力したPWは...."),),
 
-                Text("$nameText",style: TextStyle(fontSize: 30),),
-                
+                Text(nameText, style: const TextStyle(fontSize: 30),),
               ],
             ),
           ),
       )
-
     );
   }
 }

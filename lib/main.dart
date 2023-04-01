@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_train/pages/pwForm.dart';
-import 'package:flutter_train/pages/colorPref.dart';
-import 'package:flutter_train/pages/listVew.dart';
-import 'package:flutter_train/pages/mathRand.dart';
+import 'package:flutter_train/pages/pw_form.dart';
+import 'package:flutter_train/pages/color_pref.dart';
+import 'package:flutter_train/pages/list_view.dart';
+import 'package:flutter_train/pages/math_rand.dart';
+
+import 'package:flutter_train/providers.dart';
 
 void main() {
   const app = MaterialApp(home: Rooter());
   const scope = ProviderScope(child: app);
   runApp(scope);
 }
-
-final indexProvider = StateProvider((ref) => 0);
 
 /**
  * Icons:
@@ -45,10 +45,10 @@ class Rooter extends ConsumerWidget {
     ];
 
     final pages = [
-      pwFormPage(),
-      colorPrefPage(),
-      listVewPage(),
-      mathRandPage()
+      PwFormPage(),
+      ColorPrefPage(),
+      ListViewPage(),
+      MathRandPage()
     ];
 
     final bar = BottomNavigationBar(

@@ -1,13 +1,18 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class mathRandPage extends StatefulWidget {
+import 'package:flutter_train/providers.dart';
+
+class MathRandPage extends ConsumerStatefulWidget {
+  const MathRandPage({Key? key}) : super(key: key);
+  
   @override
-  State<mathRandPage> createState() => _mathRandPageState();
+  MathRandPageState createState() => MathRandPageState();
 }
 
-class _mathRandPageState extends State<mathRandPage> {
+class MathRandPageState extends ConsumerState<MathRandPage> {
   int myChoice = 1;
   int cpuChoice = 1;
   String result = "";
@@ -21,7 +26,7 @@ class _mathRandPageState extends State<mathRandPage> {
   }
 
   void generateCpuHand(){
-    cpuChoice = Random().nextInt(3);
+    cpuChoice = Random().nextInt(3)+1;
     print("cpuChoice:$cpuChoice");
   }
 
@@ -29,7 +34,6 @@ class _mathRandPageState extends State<mathRandPage> {
     if(myChoice == cpuChoice){
       result = "$myChoice = $cpuChoice";
     }
-
     else if (myChoice > cpuChoice){
       result = "$myChoice > $cpuChoice";
     }
@@ -40,11 +44,16 @@ class _mathRandPageState extends State<mathRandPage> {
 
   @override
   Widget build(BuildContext context) {
+    final counter = ref.watch(indexProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text("fourth"),
+        leading: const Icon(Icons.calculate),
+        title: const Text('Random'),
+        centerTitle: true,
+        elevation: 10,
+        actions: [Text('index:$counter'),],
       ),
-      
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -52,20 +61,14 @@ class _mathRandPageState extends State<mathRandPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
       
           children: <Widget>[
-            Text("myChoice   randomInt",
-            style: TextStyle(fontSize: 32,)            
+            const Text(
+              "myChoice   randomInt",
+              style: TextStyle(fontSize: 32,)            
+            ),            
+            Text(
+              result,
+              style: const TextStyle(fontSize: 32,)            
             ),
-
-            Text(result,
-            style: TextStyle(fontSize: 32,)            
-            ),
-
-            ElevatedButton(
-              onPressed: (){
-                print(myChoice);
-              },
-            child: Text("No$myChoice"),),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -73,27 +76,24 @@ class _mathRandPageState extends State<mathRandPage> {
                   onPressed: (){
                     selectNo(1);
                   },
-                child: Text("No1"),),
+                child: const Text("No1"),),
 
                 ElevatedButton(
                   onPressed: (){
                     selectNo(2);
                   },
-                child: Text("No2"),),
+                child: const Text("No2"),),
 
                 ElevatedButton(
                   onPressed: (){
                     selectNo(3);
                   },
-                child: Text("No3"),),
+                child: const Text("No3"),),
               ],
-
             ),   
-
           ]
         ),
       )
-
     );
   }
 }
