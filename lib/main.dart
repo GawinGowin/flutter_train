@@ -70,5 +70,5 @@ class Rooter extends ConsumerWidget {
 }
 
 /**
- * メッセージ：issue/#21
+ * メッセージ：develop
  */
