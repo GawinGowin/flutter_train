@@ -6,12 +6,24 @@ import 'package:flutter_train/pages/pw_form.dart';
 import 'package:flutter_train/pages/color_pref.dart';
 import 'package:flutter_train/pages/list_view.dart';
 import 'package:flutter_train/pages/math_rand.dart';
+import 'package:flutter_train/pages/todo_list.dart';
 
 import 'package:flutter_train/providers.dart';
+import 'package:flutter_train/database/database.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final dbHelper = DbHelper();
+  await dbHelper.initialize();
+
   const app = MaterialApp(home: Rooter());
-  const scope = ProviderScope(child: app);
+  final scope = ProviderScope(
+    overrides: [
+      databaseProvider.overrideWithValue(dbHelper),
+    ],
+    child: app
+  );
   runApp(scope);
 }
 
@@ -42,13 +54,18 @@ class Rooter extends ConsumerWidget {
         icon: Icon(Icons.calculate),
         label:"calculate"
         ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.dataset),
+        label:"database"
+        ),        
     ];
 
     final pages = [
       PwFormPage(),
       ColorPrefPage(),
       ListViewPage(),
-      MathRandPage()
+      MathRandPage(),
+      ToDoListPage()
     ];
 
     final bar = BottomNavigationBar(
@@ -68,7 +85,3 @@ class Rooter extends ConsumerWidget {
     );
   }
 }
-
-/**
- * メッセージ：develop
- */
