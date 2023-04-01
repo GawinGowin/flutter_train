@@ -68,7 +68,3 @@ class Rooter extends ConsumerWidget {
     );
   }
 }
-/**
- * プルリクエストからのマージの際の，コンフリクト発生を想定した
- * 適当なメッセージ 
- */
