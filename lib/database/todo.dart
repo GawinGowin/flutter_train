@@ -18,6 +18,14 @@ part 'todo.g.dart';
  *////
 
 @freezed
+class ToDoRecord with _$ToDoRecord {
+  factory ToDoRecord(
+    int key,
+    ToDo value,
+  ) = _ToDoRecord;
+}
+
+@freezed
 class ToDo with _$ToDo {
   factory ToDo({
     /// ToDoのタイトルです
