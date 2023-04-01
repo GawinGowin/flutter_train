@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_train/providers.dart';
+
 import "package:shared_preferences/shared_preferences.dart";
 
-class colorPrefPage extends StatefulWidget {
+class ColorPrefPage extends ConsumerStatefulWidget {
+  const ColorPrefPage({Key? key}) : super(key: key);
+
   @override
-  State<colorPrefPage> createState() => _colorPrefPageState();
+  ColorPrefPageState createState() => ColorPrefPageState();
 }
 
-class _colorPrefPageState extends State<colorPrefPage> {
+class ColorPrefPageState extends ConsumerState<ColorPrefPage> {
   final _controller = TextEditingController();
   double _r = 0.0;
   double _g = 0.0;
@@ -21,10 +26,16 @@ class _colorPrefPageState extends State<colorPrefPage> {
 
   @override
   Widget build(BuildContext context) {
+    final counter = ref.watch(indexProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text("second"),
+        leading: const Icon(Icons.palette),
+        title: const Text('ColorPalette'),
+        centerTitle: true,
+        elevation: 10,
+        actions: [Text('index:$counter'),],
       ),
+
       body: Column(children: <Widget>[
         TextField(
           controller: _controller,
@@ -60,18 +71,20 @@ class _colorPrefPageState extends State<colorPrefPage> {
           color: Color.fromARGB(255, _r.toInt(), _g.toInt(), _b.toInt()),
         ),
 
-        FloatingActionButton(
+        ElevatedButton(
           onPressed: (){
             savePref();
             showDialog(
               context: context,
               builder: (BuildContext context) => const AlertDialog(
-                title: Text("saved!"),
-                content: Text("save preferences")
+                title: Text("Saved!"),
+                content: Text("色情報を保存しました。")
               )
             );
           },
-        )
+          child: const Text("Save"),
+        ),
+
       ]),
     );
   }
