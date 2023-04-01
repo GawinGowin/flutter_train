@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_train/second_page.dart';
-
-class FirstPage extends StatefulWidget {
+class pwFormPage extends StatefulWidget {
   @override
-  State<FirstPage> createState() => _FirstPageState();
+  State<pwFormPage> createState() => _pwFormPageState();
 }
 
-class _FirstPageState extends State<FirstPage> {
+class _pwFormPageState extends State<pwFormPage> {
   String nameText = "";
 
 

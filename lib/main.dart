@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_train/first_page.dart';
-import 'package:flutter_train/second_page.dart';
-import 'package:flutter_train/third_page.dart';
-import 'package:flutter_train/fourth_page.dart';
+import 'package:flutter_train/pages/pwForm.dart';
+import 'package:flutter_train/pages/colorPref.dart';
+import 'package:flutter_train/pages/listVew.dart';
+import 'package:flutter_train/pages/mathRand.dart';
 
 void main() {
   const app = MaterialApp(home: Rooter());
@@ -13,51 +13,54 @@ void main() {
   runApp(scope);
 }
 
-final indexProvider = StateProvider((ref){
-  return 0;
-});
+final indexProvider = StateProvider((ref) => 0);
+
+/**
+ * Icons:
+ * https://fonts.google.com/icons
+ *////
 
 class Rooter extends ConsumerWidget {
   const Rooter({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final index = ref.watch(indexProvider);
     const items = [
       BottomNavigationBarItem(
-        icon: Icon(Icons.home),
-        label:"home"
+        icon: Icon(Icons.password),
+        label:"password"
         ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.schedule),
-        label:"schedule"
+        icon: Icon(Icons.palette),
+        label:"palette"
         ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.air),
-        label:"air"
+        icon: Icon(Icons.list),
+        label:"list"
         ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.settings_outlined),
-        label:"settings"
+        icon: Icon(Icons.calculate),
+        label:"calculate"
         ),
     ];
+
+    final pages = [
+      pwFormPage(),
+      colorPrefPage(),
+      listVewPage(),
+      mathRandPage()
+    ];
+
     final bar = BottomNavigationBar(
       items: items,
       backgroundColor: Colors.grey[200],
       selectedItemColor: Colors.amber[600],
       unselectedItemColor: Colors.grey,
       currentIndex: index,
-      onTap: (index){
-        ref.read(indexProvider.notifier).state = index;
+      onTap: (indexTap){
+        ref.read(indexProvider.notifier).state = indexTap;
       },
     );
-
-    final pages = [
-      FirstPage(),
-      SecondPage(),
-      ThirdPage(),
-      FourthPage()
-    ];
 
     return Scaffold(
       body: pages[index],

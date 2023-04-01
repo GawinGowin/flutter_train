@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import "package:shared_preferences/shared_preferences.dart";
 
-class SecondPage extends StatefulWidget {
+class colorPrefPage extends StatefulWidget {
   @override
-  State<SecondPage> createState() => _SecondPageState();
+  State<colorPrefPage> createState() => _colorPrefPageState();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _colorPrefPageState extends State<colorPrefPage> {
   final _controller = TextEditingController();
   double _r = 0.0;
   double _g = 0.0;
@@ -32,7 +32,6 @@ class _SecondPageState extends State<SecondPage> {
           minLines: 1,
           maxLines: 5,
         ),
-
         Slider(
           value: _r,
           onChanged: (double value){setState(() {_r = value;});},
@@ -55,7 +54,7 @@ class _SecondPageState extends State<SecondPage> {
           divisions: 255,
         ),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           width: 125,
           height: 125,
           color: Color.fromARGB(255, _r.toInt(), _g.toInt(), _b.toInt()),
@@ -66,7 +65,7 @@ class _SecondPageState extends State<SecondPage> {
             savePref();
             showDialog(
               context: context,
-              builder: (BuildContext context) => AlertDialog(
+              builder: (BuildContext context) => const AlertDialog(
                 title: Text("saved!"),
                 content: Text("save preferences")
               )

@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class FourthPage extends StatefulWidget {
+class mathRandPage extends StatefulWidget {
   @override
-  State<FourthPage> createState() => _FourthPageState();
+  State<mathRandPage> createState() => _mathRandPageState();
 }
 
-class _FourthPageState extends State<FourthPage> {
+class _mathRandPageState extends State<mathRandPage> {
   int myChoice = 1;
   int cpuChoice = 1;
   String result = "";

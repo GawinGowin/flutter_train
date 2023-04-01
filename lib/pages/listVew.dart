@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train/fourth_page.dart';
 
-class ThirdPage extends StatelessWidget {
+class listVewPage extends StatelessWidget {
   List<int> entries = <int>[for (var i = 0; i < 100; i++) i];
 
   @override
