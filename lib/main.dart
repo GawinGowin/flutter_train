@@ -13,11 +13,11 @@ import 'package:flutter_train/database/database.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
-
   final dbHelper = DbHelper();
   await dbHelper.initialize();
 
   const app = MaterialApp(home: Rooter());
+  
   final scope = ProviderScope(
     overrides: [
       databaseProvider.overrideWithValue(dbHelper),

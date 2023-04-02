@@ -29,11 +29,11 @@ class ColorPrefPageState extends ConsumerState<ColorPrefPage> {
     final counter = ref.watch(indexProvider);
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.palette),
+        leading: Text('index:$counter'),
         title: const Text('ColorPalette'),
         centerTitle: true,
         elevation: 10,
-        actions: [Text('index:$counter'),],
+        actions: [],
       ),
 
       body: Column(children: <Widget>[

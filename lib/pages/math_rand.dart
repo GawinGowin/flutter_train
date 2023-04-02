@@ -47,11 +47,11 @@ class MathRandPageState extends ConsumerState<MathRandPage> {
     final counter = ref.watch(indexProvider);
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.calculate),
+        leading: Text('index:$counter'),
         title: const Text('Random'),
         centerTitle: true,
         elevation: 10,
-        actions: [Text('index:$counter'),],
+        actions: [],
       ),
 
       body: Center(

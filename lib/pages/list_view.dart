@@ -13,11 +13,11 @@ class ListViewPage extends ConsumerWidget {
     final counter = ref.watch(indexProvider);
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.list),
+        leading: Text('index:$counter'),
         title: Text('ListView'),
         centerTitle: true,
         elevation: 10,
-        actions: [Text('index:$counter'),],
+        actions: [],
       ),
       
       body: ListView.builder(

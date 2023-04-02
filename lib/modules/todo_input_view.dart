@@ -25,11 +25,11 @@ class ToDoInputView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _controller = useTextEditingController(
-      text: record?.value.title,
+    final controller = useTextEditingController(
+      text: record?.value.title, // record == NULL でも例外が発生しない
     );
-
-    final _todoListNotifier = ref.watch(
+    
+    final todoListNotifier = ref.watch(
       todoListProvider.notifier,
     );
 
@@ -47,39 +47,36 @@ class ToDoInputView extends HookConsumerWidget {
         children: [
           TextField(
             // 入力値の変更を外部インスタンスで制御できるようにします
-            controller: _controller,
+            controller: controller,
             // 画面表示時にフォーカスします
             autofocus: true,
             // キーボードでdone(完了)したらこの画面を閉じます
             onEditingComplete: () async {
-              if (_controller.text.isEmpty) {
+              if (controller.text.isEmpty) {
                 return;
               }
 
               if (record == null) {
-                await _todoListNotifier.add(
-                  ToDo(title: _controller.text),
+                await todoListNotifier.add(
+                  ToDo(title: controller.text),
                 );
               } else {
                 // ToDoのtitleを更新します
-                final updatedToDo = record!.value.copyWith(
-                  title: _controller.text,
+                final updatedToDo = record!.value.copyWith( 
+                  title: controller.text,
                 );
 
                 // 新しいToDoRecordとToDoで更新します
-                await _todoListNotifier.update(
+                await todoListNotifier.update(
                   record!.copyWith(
-                    value: updatedToDo,
+                    value: updatedToDo, // 変数の末尾に付ける"!" : "非nullアサーション演算子"(その変数がnullでないことを保証する)
                   ),
                 );
               }
-
               Navigator.pop(context);
             },
             decoration: const InputDecoration(
-              // TextFieldの下線を消します
-              border: InputBorder.none,
-              // 未入力時に表示するテキストです
+              border: InputBorder.none, // TextFieldの下線を消去
               hintText: 'ToDoのタイトルを入力します',
             ),
           ),

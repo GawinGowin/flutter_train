@@ -17,11 +17,11 @@ class PwFormPageState extends ConsumerState<PwFormPage> {
     final counter = ref.watch(indexProvider);
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.password),
+        leading: Text('index:$counter'),
         title: const Text('PasswordForm'),
         centerTitle: true,
         elevation: 10,
-        actions: [Text('index:$counter'),],
+        actions: [],
       ),
 
       body: Center(

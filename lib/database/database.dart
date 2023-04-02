@@ -8,11 +8,6 @@ import 'package:flutter_train/database/todo.dart';
 
 class DbHelper {
   DbHelper();
-  
-  DbHelper._();
-  // 初回の呼び出しでインスタンスを生成します
-  static final DbHelper _instance = DbHelper._();
-
 
   late final Database _database;
   late final StoreRef<int, Map<String, dynamic>> _store;
@@ -53,8 +48,7 @@ class DbHelper {
 
   // "U" of "CRUD"
   Future<void> update(int key, ToDo todo) async {
-    _store.record(key).put(_database, todo.toJson());
+    await _store.record(key).put(_database, todo.toJson());
   }
-
 }
 

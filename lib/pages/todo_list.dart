@@ -10,12 +10,14 @@ class ToDoListPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ToDoListStateに変更があるとリビルドされます
+    // ToDoListStateに変更があるとリビルド
     final todos = ref.watch(todoListProvider);
-    // ToDoListStateのメソッドを使えるようにします
     final todoNotifier = ref.watch(todoListProvider.notifier);
+    final counter = ref.watch(indexProvider);
 
-    // buildが呼ばれてからToDoリストを読み込みます
+    var isSelected = [false];
+
+    // buildが呼ばれてからToDoリストを読み込む
     useEffect(() {
       todoNotifier.find();
       return;
@@ -23,10 +25,14 @@ class ToDoListPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: Text('index:$counter'),
         title: const Text('ToDo'),
+        centerTitle: true,
+        elevation: 10,
+        actions: const [/*Icon(Icons.delete)*/],
       ),
       body: ListView.builder(
-        // ListTileからCheckedListTileに変更します
+        // ListTileからCheckedListTileに変更
         itemBuilder: (context, index) => CheckboxListTile(
           onChanged: (checked) {
             todoNotifier.toggle(todos[index]);
