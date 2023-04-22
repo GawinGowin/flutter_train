@@ -43,6 +43,8 @@ dependencies:
   sembast: ^3.4.3+1
   path_provider: ^2.0.14
   path: ^1.8.2
+  firebase_core: ^2.10.0
+  cloud_firestore: ^4.5.2
   
 
 dev_dependencies:
