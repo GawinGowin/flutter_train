@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:flutter_train/pages/pw_form.dart';
@@ -13,6 +17,10 @@ import 'package:flutter_train/database/database.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );  
 
   final dbHelper = DbHelper();
   await dbHelper.initialize();
