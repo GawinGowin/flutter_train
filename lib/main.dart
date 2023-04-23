@@ -11,6 +11,7 @@ import 'package:flutter_train/pages/color_pref.dart';
 import 'package:flutter_train/pages/list_view.dart';
 import 'package:flutter_train/pages/math_rand.dart';
 import 'package:flutter_train/pages/todo_list.dart';
+import 'package:flutter_train/pages/map.dart';
 
 import 'package:flutter_train/providers.dart';
 import 'package:flutter_train/database/database.dart';
@@ -65,6 +66,10 @@ class Rooter extends ConsumerWidget {
       BottomNavigationBarItem(
         icon: Icon(Icons.dataset),
         label:"database"
+        ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.map),
+        label:"google map"
         ),        
     ];
 
@@ -73,7 +78,8 @@ class Rooter extends ConsumerWidget {
       ColorPrefPage(),
       ListViewPage(),
       MathRandPage(),
-      ToDoListPage()
+      ToDoListPage(),
+      MapPage()
     ];
 
     final bar = BottomNavigationBar(
