@@ -51,4 +51,3 @@ pubspec.lock
 **/firebase_app_id_file.json
 
 assets/*.json
-android/app/src/main/res/values/strings.xml
