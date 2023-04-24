@@ -15,6 +15,7 @@ import 'package:flutter_train/pages/map.dart';
 
 import 'package:flutter_train/providers.dart';
 import 'package:flutter_train/database/database.dart';
+import 'package:flutter_train/modules/load_map_api.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,8 @@ Future<void> main() async{
 
   final dbHelper = DbHelper();
   await dbHelper.initialize();
+
+  String apikey = await loadApiKey();
 
   const app = MaterialApp(home: Rooter());
   final scope = ProviderScope(

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_secret_manager/google_secret_manager.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -22,8 +19,6 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-    final key = loadApiKey();
-
     return Scaffold(
       appBar: AppBar(
         leading: const Icon(Icons.map),
@@ -40,18 +35,4 @@ class _MapPageState extends State<MapPage> {
         ),
       );
   }
-}
-
-Future<String> loadApiKey() async{
-  // 再びこのページを開くと、
-  // _Exception (Exception: GoogleSecretManager is already initialized)
-  // おそらく、main.dartで行う必要がありそうだ
-  final path = 'assets/service-account.json';
-  final json = await rootBundle.loadString(path);
-
-  await GoogleSecretManager.initViaServiceAccountJson(json);
-  final response = await GoogleSecretManager.instance.get('GoogleMapAPI');
-  final String decodedKey = utf8.decode(base64Url.decode(response.payload!.data!));
-
-  return decodedKey;
 }
